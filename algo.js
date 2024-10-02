@@ -1,4 +1,27 @@
+const map = {
+    r1c1: true,
+    r1c2: true,
+    r1c3: true,
+    r1c4: false,
+    r1c5: true,
+    r1c6: false,
+    r2c1: false,
+    r2c2: true,
+    r2c3: true,
+    r2c4: true,
+    r2c5: false,
+    r2c6: false,
+    r3c1: false,
+    r3c2: true,
+    r3c3: true,
+    r3c4: false,
+    r3c5: false,
+    r3c6: true,
+}
+let row = 1;
+let column = 1;
 const object = {};
+
 object.r1c1 = localStorage.getItem('r1c1');
 object.r1c2 = localStorage.getItem('r1c2');
 object.r1c3 = localStorage.getItem('r1c3');
@@ -69,7 +92,48 @@ let valueR = null;
 let valueC = null;
 let lastKet = null;
 
+function Open()
+{
+    if (row !== 3 || column !== 6)
+    {
+        let step = map['r'+row+'c'+column];
+        let timerId = setInterval(() => {
+            if (step)
+            {
+                document.getElementById('r'+row+'c'+column).src = './resources/zero.svg';
+            }
+            else {
+                document.getElementById('r'+row+'c'+column).src = './resources/one.svg';
+            }
+            step = !step;
+        },500)
+        setTimeout(() => {
+            clearInterval(timerId);
+            if (map['r'+row+'c'+column])
+            {
+                document.getElementById('r'+row+'c'+column).src = './resources/one.svg';
+            }
+            else {
+                document.getElementById('r'+row+'c'+column).src = './resources/zero.svg';
+            }
+            if (row === 3)
+            {
+                row = 1;
+                column = column + 1;
+            }
+            else
+            {
+                row = row + 1;
+            }
+        }, 5000)
+    }
+}
+
 document.addEventListener('keydown', function(event) {
+    if (event.code === 'Enter')
+    {
+        Open();
+    }
     if (event.code === 'KeyR' && KeyR === false) {
         KeyR = true;
         lastKet = 'R';
