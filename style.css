@@ -2,13 +2,18 @@ body{
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap:40px;
+    min-height:100vh;
+    min-width: 100vw;
+    background-color: #97947f;
 }
 .layout{
     position: relative;
     width:2213px;
     height:975px;
-    outline: solid 1px black;
+    background-image: url("./resources/card.png");
 }
 
 p, div{

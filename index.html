@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="font.css"></link>
     <link rel="stylesheet" href="reset.css"></link>
     <title>Макет-билета Лото</title>
+    <script src="algo.js"></script>
 </head>
 <body>
     <div class="layout">
@@ -15,7 +16,7 @@
         <p class="mini-title"> День рождения <p class="IIT">ИИТ!</p></p>
         <div class="ticket">
             <p class="title-ticket">Билет</p>
-            <p class="title-ticket ticket-num">№1</p>
+            <p class="title-ticket ticket-num">№0</p>
         </div>
         <p class="text description">Лотерейный билет ко дню рождения <b>ИИТ</b> даст вам возможность выиграть вкусные и полезные призы и запомнить этот крутой день надолго!
             <br> Если комбинация в столбце или строке совпала с выпавшей при розыгрыше, то вы обладатель одного из соответствующих призов, какого — выбирайте сами!
@@ -47,49 +48,49 @@
         <div class="table">
             <div class="unit unit-1">
                 <div class="column column-1">
-                    <img class="value-1 black" src="resources/one.svg">
-                    <img class="value-2 black" src="resources/one.svg">
-                    <img class="value-3 black" src="resources/one.svg">
+                    <img class="value-1 black" id="r1c1" src="resources/values.svg">
+                    <img class="value-2 black" id="r2c1" src="resources/values.svg">
+                    <img class="value-3 black" id="r3c1" src="resources/values.svg">
                 </div>
                 <img class="arrow" src="resources/arrow.svg">
             </div>
             <div class="unit unit-2">
                 <div class="column column-2">
-                    <img class="value-1 black" src="resources/one.svg">
-                    <img class="value-2 black" src="resources/one.svg">
-                    <img class="value-3 black" src="resources/one.svg">
+                    <img class="value-1 black" id="r1c2" src="resources/values.svg">
+                    <img class="value-2 black" id="r2c2" src="resources/values.svg">
+                    <img class="value-3 black" id="r3c2" src="resources/values.svg">
                 </div>
                 <img class="arrow" src="resources/arrow.svg">
             </div>
             <div class="unit unit-3">
                 <div class="column column-3">
-                    <img class="value black" src="resources/one.svg">
-                    <img class="value black" src="resources/one.svg">
-                    <img class="value black" src="resources/one.svg">
+                    <img class="value black" id="r1c3" src="resources/values.svg">
+                    <img class="value black" id="r2c3" src="resources/values.svg">
+                    <img class="value black" id="r3c3" src="resources/values.svg">
                 </div>
                 <img class="arrow" src="resources/arrow.svg">
             </div>
             <div class="unit unit-4">
                 <div class="column column-4">
-                    <img class="value-1 black" src="resources/one.svg">
-                    <img class="value-2 black" src="resources/one.svg">
-                    <img class="value-3 black" src="resources/one.svg">
+                    <img class="value-1 black" id="r1c4" src="resources/values.svg">
+                    <img class="value-2 black" id="r2c4" src="resources/values.svg">
+                    <img class="value-3 black" id="r3c4" src="resources/values.svg">
                 </div>
                 <img class="arrow" src="resources/arrow.svg">
             </div>
             <div class="unit unit-5">
                 <div class="column column-5">
-                    <img class="value black" src="resources/one.svg">
-                    <img class="value black" src="resources/one.svg">
-                    <img class="value black" src="resources/one.svg">
+                    <img class="value black" id="r1c5" src="resources/values.svg">
+                    <img class="value black" id="r2c5" src="resources/values.svg">
+                    <img class="value black" id="r3c5" src="resources/values.svg">
                 </div>
                 <img class="arrow" src="resources/arrow.svg">
             </div>
             <div class="unit unit-6">
                 <div class="column column-6">
-                    <img class="value-1 black" src="resources/one.svg">
-                    <img class="value-2 black" src="resources/one.svg">
-                    <img class="value-3 black" src="resources/one.svg">
+                    <img class="value-1 black" id="r1c6" src="resources/values.svg">
+                    <img class="value-2 black" id="r2c6" src="resources/values.svg">
+                    <img class="value-3 black" id="r3c6" src="resources/values.svg">
                 </div>
             </div>
         </div>
@@ -100,6 +101,5 @@
 
 
     </div>
-
 </body>
 </html>
