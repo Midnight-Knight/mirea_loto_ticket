@@ -21,27 +21,28 @@ const map = {
 let row = 1;
 let column = 1;
 const object = {};
+let work = false;
 
-object.r1c1 = localStorage.getItem('r1c1');
-object.r1c2 = localStorage.getItem('r1c2');
-object.r1c3 = localStorage.getItem('r1c3');
-object.r1c4 = localStorage.getItem('r1c4');
-object.r1c5 = localStorage.getItem('r1c5');
-object.r1c6 = localStorage.getItem('r1c6');
+object.r1c1 = null;
+object.r1c2 = null;
+object.r1c3 = null;
+object.r1c4 = null;
+object.r1c5 = null;
+object.r1c6 = null;
 
-object.r2c1 = localStorage.getItem('r2c1');
-object.r2c2 = localStorage.getItem('r2c2');
-object.r2c3 = localStorage.getItem('r2c3');
-object.r2c4 = localStorage.getItem('r2c4');
-object.r2c5 = localStorage.getItem('r2c5');
-object.r2c6 = localStorage.getItem('r2c6');
+object.r2c1 = null;
+object.r2c2 = null;
+object.r2c3 = null;
+object.r2c4 = null;
+object.r2c5 = null;
+object.r2c6 = null;
 
-object.r3c1 = localStorage.getItem('r3c1');
-object.r3c2 = localStorage.getItem('r3c2');
-object.r3c3 = localStorage.getItem('r3c3');
-object.r3c4 = localStorage.getItem('r3c4');
-object.r3c5 = localStorage.getItem('r3c5');
-object.r3c6 = localStorage.getItem('r3c6');
+object.r3c1 = null;
+object.r3c2 = null;
+object.r3c3 = null;
+object.r3c4 = null;
+object.r3c5 = null;
+object.r3c6 = null;
 
 for (let i = 1; i <= 3; i++)
 {
@@ -86,16 +87,11 @@ function render()
 
 window.addEventListener('load', () => render())
 
-let KeyR = false;
-let KeyC = false;
-let valueR = null;
-let valueC = null;
-let lastKet = null;
-
 function Open()
 {
-    if (row !== 3 || column !== 6)
+    if (row !== 4)
     {
+        work = !work;
         let step = map['r'+row+'c'+column];
         let timerId = setInterval(() => {
             if (step)
@@ -106,7 +102,7 @@ function Open()
                 document.getElementById('r'+row+'c'+column).src = './resources/one.svg';
             }
             step = !step;
-        },500)
+        },400)
         setTimeout(() => {
             clearInterval(timerId);
             if (map['r'+row+'c'+column])
@@ -125,90 +121,14 @@ function Open()
             {
                 row = row + 1;
             }
+            work = !work;
         }, 5000)
     }
 }
 
 document.addEventListener('keydown', function(event) {
-    if (event.code === 'Enter')
+    if (event.code === 'Enter' && work === false)
     {
         Open();
-    }
-    if (event.code === 'KeyR' && KeyR === false) {
-        KeyR = true;
-        lastKet = 'R';
-    }
-    else if (event.code === 'KeyC' && KeyC === false) {
-        KeyC = true;
-        lastKet = 'C';
-    }
-    else if ((event.code === 'Digit1' || event.code === 'Digit0' || event.code === 'KeyN') && KeyR === true && KeyC === true && valueR !== null && valueC !== null)
-    {
-        if (event.code === 'Digit1')
-        {
-            object['r'+valueR+"c"+valueC] = true;
-        }
-        if (event.code === 'Digit0')
-        {
-            object['r'+valueR+"c"+valueC] = false;
-        }
-        if (event.code === 'KeyN')
-        {
-            object['r'+valueR+"c"+valueC] = null;
-        }
-        localStorage.setItem('r'+valueR+"c"+valueC, object['r'+valueR+"c"+valueC]);
-        render();
-        KeyR = false;
-        KeyC = false;
-        valueR = null;
-        valueC = null;
-        lastKet = null;
-    }
-    else if ((event.code === 'Digit1' || event.code === 'Digit2' || event.code === 'Digit3') && KeyR === true && lastKet === 'R')
-    {
-        switch (event.code) {
-            case "Digit1":
-                valueR = 1;
-                break;
-            case "Digit2":
-                valueR = 2;
-                break;
-            case "Digit3":
-                valueR = 3;
-                break;
-        }
-        lastKet = null;
-    }
-    else if ((event.code === 'Digit1' || event.code === 'Digit2' || event.code === 'Digit3' || event.code === 'Digit4' || event.code === 'Digit5' || event.code === 'Digit6') && KeyC === true && lastKet === 'C')
-    {
-        switch (event.code) {
-            case "Digit1":
-                valueC = 1;
-                break;
-            case "Digit2":
-                valueC = 2;
-                break;
-            case "Digit3":
-                valueC = 3;
-                break;
-            case "Digit4":
-                valueC = 4;
-                break;
-            case "Digit5":
-                valueC = 5;
-                break;
-            case "Digit6":
-                valueC = 6;
-                break;
-        }
-        lastKet = null;
-    }
-    else
-    {
-        KeyR = false;
-        KeyC = false;
-        valueR = null;
-        valueC = null;
-        lastKet = null;
     }
 });
