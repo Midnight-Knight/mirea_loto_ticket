@@ -1,15 +1,15 @@
 const map = {
-    r1c1: true,
+    r1c1: false,
     r1c2: true,
-    r1c3: true,
-    r1c4: false,
+    r1c3: false,
+    r1c4: true,
     r1c5: true,
     r1c6: false,
-    r2c1: false,
-    r2c2: true,
+    r2c1: true,
+    r2c2: false,
     r2c3: true,
-    r2c4: true,
-    r2c5: false,
+    r2c4: false,
+    r2c5: true,
     r2c6: false,
     r3c1: false,
     r3c2: true,
@@ -19,7 +19,6 @@ const map = {
     r3c6: true,
 }
 let row = 1;
-let column = 1;
 const object = {};
 let work = false;
 
@@ -92,35 +91,31 @@ function Open()
     if (row !== 4)
     {
         work = !work;
-        let step = map['r'+row+'c'+column];
         let timerId = setInterval(() => {
-            if (step)
+            for(let column = 1; column <= 6; column++)
             {
-                document.getElementById('r'+row+'c'+column).src = './resources/zero.svg';
+                if (Boolean(Math.random() < 0.5))
+                {
+                    document.getElementById('r'+row+'c'+column).src = './resources/zero.svg';
+                }
+                else {
+                    document.getElementById('r'+row+'c'+column).src = './resources/one.svg';
+                }
             }
-            else {
-                document.getElementById('r'+row+'c'+column).src = './resources/one.svg';
-            }
-            step = !step;
-        },400)
+        },500)
         setTimeout(() => {
             clearInterval(timerId);
-            if (map['r'+row+'c'+column])
+            for (let column = 1; column <= 6; column++)
             {
-                document.getElementById('r'+row+'c'+column).src = './resources/one.svg';
+                if (map['r'+row+'c'+column])
+                {
+                    document.getElementById('r'+row+'c'+column).src = './resources/one.svg';
+                }
+                else {
+                    document.getElementById('r'+row+'c'+column).src = './resources/zero.svg';
+                }
             }
-            else {
-                document.getElementById('r'+row+'c'+column).src = './resources/zero.svg';
-            }
-            if (row === 3)
-            {
-                row = 1;
-                column = column + 1;
-            }
-            else
-            {
-                row = row + 1;
-            }
+            row = row + 1;
             work = !work;
         }, 5000)
     }
